@@ -139,6 +139,7 @@ section .body .video-container .description {
 
 section .next {
     padding: 20px;
+    margin-top: 30px;
 
     display: flex;
     align-items: center;
@@ -435,6 +436,7 @@ section .next .text {
 
     section .next {
         padding: 14px;
+        margin-top: 20px;
         font-size: 1em;
         flex-direction: column;
         gap: 8px;
