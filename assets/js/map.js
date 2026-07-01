@@ -218,7 +218,6 @@ $('a[href*="#"]')
                         $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
                         $target.focus(); // Set focus again
                     }
-                    ;
                 });
             }
         }

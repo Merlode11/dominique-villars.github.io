@@ -93,6 +93,12 @@ section .title {
     font-size: 2em;
 }
 
+section h4 {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+}
+
 section .body {
     width: 50%;
 
@@ -233,7 +239,7 @@ section .next .text {
     font-weight: bold;
     padding: 5px 2px;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;*/
     background-color: #fff;
 }
 
@@ -253,7 +259,7 @@ section .next .text {
 .leaflet-popup-content-wrapper {
     background-color: transparent;
     color: inherit;
-    box-shadow: none;
+    box-shadow: none !important;
     text-align: inherit;
 }
 
