@@ -19,6 +19,7 @@ html, body {
     box-sizing: border-box;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
 }
 
 #navigation-bar {
@@ -84,6 +85,7 @@ section {
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
+    scroll-margin-top: 90px;
 }
 
 section .title {
@@ -169,18 +171,18 @@ section .next .text {
     padding: 10vh 0 6vh;
 }
 
-#antisemitism {
-    min-height: 90vh;
+#hautes-alpes {
+    min-height: 85vh;
     height: auto;
-    padding: 10vh 0 6vh;
+    padding: 12vh 0 6vh;
 }
 
 #hautes-alpes .body .slideshow {
-    width: 800px;
-
+    width: min(800px, 90vw);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
 }
 
 #hautes-alpes .body .slideshow .select {
@@ -198,11 +200,21 @@ section .next .text {
 }
 
 #hautes-alpes .body .slideshow .videos {
+    min-height: 320px;
+}
+
+#hautes-alpes .body .slideshow .videos {
     width: 80%;
 
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#hautes-alpes .body .slideshow .videos .video-container {
+    width: 100%;
+    max-width: 450px;
+    height: 300px;
 }
 
 #hautes-alpes .body .slideshow .videos .video-container {
@@ -242,7 +254,7 @@ section .next .text {
 #pupils {
     min-height: 90vh;
     height: auto;
-    padding: 8vh 0 6vh;
+    padding: 10vh 0 6vh;
 }
 
 #travels {
@@ -342,7 +354,6 @@ section .next .text {
 }
 
 .modal-open {
-    height: 100vh;
     overflow-y: hidden;
     overscroll-behavior: contain;
 }
