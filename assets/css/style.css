@@ -76,14 +76,14 @@ html, body {
 }
 
 section {
-    width: 100vw;
-    height: 70vh;
-    padding: 15vh 0;
-
+    width: 100%;
+    min-height: 70vh;
+    padding: 15vh 0 6vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 
 section .title {
@@ -163,6 +163,12 @@ section .next .text {
     margin: 0 15px 0 15px;
 }
 
+#antisemitism {
+    min-height: 90vh;
+    height: auto;
+    padding: 10vh 0 6vh;
+}
+
 #hautes-alpes .body .slideshow {
     width: 800px;
 
@@ -210,13 +216,15 @@ section .next .text {
 }
 
 #gap {
-    height: 80vh;
-    padding: 10vh 0;
+    min-height: 80vh;
+    height: auto;
+    padding: 10vh 0 6vh;
 }
 
 #gap .body {
-    width: 65%;
-    height: 75%;
+    width: min(65%, 1100px);
+    min-height: 420px;
+    height: 65vh;
 }
 
 #gap .body #map {
@@ -226,8 +234,15 @@ section .next .text {
 }
 
 #pupils {
-    height: 90vh;
-    padding: 8vh 0 0 0;
+    min-height: 90vh;
+    height: auto;
+    padding: 8vh 0 6vh;
+}
+
+#travels {
+    min-height: 90vh;
+    height: auto;
+    padding: 10vh 0 6vh;
 }
 
 /* Ancien code */
@@ -339,4 +354,81 @@ section .next .text {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    section {
+        min-height: auto;
+        padding: 12vh 0 5vh;
+    }
+
+    section .body {
+        width: 90%;
+    }
+
+    section .body .video-container {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+    }
+
+    #hautes-alpes .body .slideshow {
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #hautes-alpes .body .slideshow .videos {
+        width: 100%;
+    }
+
+    #gap {
+        min-height: auto;
+        padding-bottom: 8vh;
+    }
+
+    #gap .body {
+        width: 90%;
+        height: 55vh;
+        min-height: 320px;
+    }
+
+    #pupils {
+        min-height: auto;
+        padding-bottom: 8vh;
+    }
+}
+
+@media (max-width: 600px) {
+    #navigation-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #navigation-bar a {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    section .title {
+        font-size: 1.5em;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    section .next {
+        padding: 14px;
+        font-size: 1em;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #gap .body {
+        height: 45vh;
+        min-height: 280px;
+    }
+
+    section .body .video-container video {
+        object-fit: cover;
+    }
 }
