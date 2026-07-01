@@ -169,6 +169,12 @@ section .next .text {
     padding: 10vh 0 6vh;
 }
 
+#antisemitism {
+    min-height: 90vh;
+    height: auto;
+    padding: 10vh 0 6vh;
+}
+
 #hautes-alpes .body .slideshow {
     width: 800px;
 
