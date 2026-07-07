@@ -248,7 +248,7 @@ section .next .text {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 18px;
 }
 
 #hautes-alpes .body .slideshow .pagination-dot {
@@ -462,40 +462,55 @@ section .next .text {
 
 /* Layout fixes for medium-large viewports where arrows were wrapping (901px - 1520px) */
 @media (min-width: 901px) and (max-width: 1520px) {
+    /* Grid layout: left arrow | video | right arrow  — pagination under */
     #hautes-alpes .body .slideshow {
         width: 90%;
-        display: flex;
-        flex-wrap: nowrap; /* prevent arrows from wrapping under the video */
+        display: grid;
+        grid-template-columns: 64px 1fr 64px;
+        grid-template-areas:
+            "arrow-left videos arrow-right"
+            "pagination pagination pagination";
+        gap: 12px 20px;
         align-items: center;
-        justify-content: center;
-        gap: 16px;
+        justify-items: center;
     }
 
-    /* Reserve space for arrows and let the video take remaining width */
     #hautes-alpes .body .slideshow .videos {
-        width: calc(100% - 140px);
-        min-height: 320px;
+        grid-area: videos;
+        width: 100%;
+        min-height: 260px;
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: 0; /* allow shrinking inside grid */
     }
 
-    /* Make arrow buttons a fixed reasonable size so they don't push to next line */
     #hautes-alpes .body .slideshow .select {
-        flex: 0 0 60px;
-        width: 60px;
-        font-size: 3em;
+        width: 64px;
+        height: 64px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.4em;
+        padding: 0;
+        border-radius: 50%;
+        background: transparent;
     }
 
-    #hautes-alpes .body .slideshow .select.left,
+    #hautes-alpes .body .slideshow .select.left {
+        grid-area: arrow-left;
+    }
+
     #hautes-alpes .body .slideshow .select.right {
-        align-self: center;
+        grid-area: arrow-right;
     }
 
     #hautes-alpes .body .slideshow .pagination {
+        grid-area: pagination;
         width: 100%;
-        margin-top: 8px;
+        justify-content: center;
+        margin-top: 40px;
     }
 }
 
@@ -559,7 +574,7 @@ section .next .text {
     #hautes-alpes .body .slideshow .pagination {
         grid-area: pagination;
         width: auto;
-        margin-top: 0;
+        margin-top: 12px; /* petit espace sur mobile */
     }
 
     section .next {
