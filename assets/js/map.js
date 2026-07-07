@@ -3,7 +3,7 @@
 const families = [
     {
         name: "Beer",
-        description: "Primeta et Jacob Beer, d'origine Polonaise, immigrés en France",
+        description: "Primeta et Jacob Beer, originaires de Pologne, ont immigré en France; famille modeste arrêtée, internée puis déportée durant l'Occupation.",
         num_convoi: 29,
         localisation: {
             lat: 44.56064,
@@ -13,7 +13,7 @@ const families = [
     },
     {
         name: "Bloch",
-        description: "La famille Bloch",
+        description: "La famille Bloch, active localement, a été raflée pendant l'Occupation; certains membres déportés, leurs souvenirs restant dans la communauté.",
         num_convoi: 61,
         localisation: {
             lat: 44.561678,
@@ -23,7 +23,7 @@ const families = [
     },
     {
         name: "Hesse",
-        description: "La famille Hesse",
+        description: "La famille Hesse, bien intégrée à Gap, a subi persécutions antisémites, arrestation collective et déportation durant la Seconde Guerre mondiale.",
         num_convoi: 75,
         localisation: {
             lat: 44.557315,
@@ -33,7 +33,7 @@ const families = [
     },
     {
         name: "Daniel Perles",
-        description: "La famille Perles",
+        description: "Daniel Perles et sa famille, commerçants à Gap; arrêtés lors des rafles puis déportés; leur mémoire est toujours évoquée localement.",
         num_convoi: 70,
         localisation: {
             lat: 44.56108141438776,
@@ -44,7 +44,7 @@ const families = [
     },
     {
         name: "Jean Vorms",
-        description: "La famille Vorms",
+        description: "Jean Vorms et sa famille, touchés par les rafles: arrestation, internement puis déportation; récit transmis par proches et archives.",
         num_convoi: 70,
         localisation: {
             lat: 44.5612,
@@ -55,7 +55,7 @@ const families = [
     },
     {
         name: "Reicher",
-        description: "La famille Reicher",
+        description: "La famille Reicher, ancrée dans la ville, a été persécutée, arrêtée puis déportée; les traces de leur présence restent dans les mémoires locales.",
         num_convoi: 66,
         localisation: {
             lat: 44.5602701,
@@ -65,7 +65,7 @@ const families = [
     },
     {
         name: "Reins",
-        description: "La famille Reins",
+        description: "La famille Reins, raflée pendant la guerre, séparée et déportée; témoignages et documents conservent le souvenir de leur destin tragique.",
         num_convoi: 67,
         localisation: {
             lat: 44.559620,
@@ -75,7 +75,7 @@ const families = [
     },
     {
         name: "Russo",
-        description: "La famille Russo",
+        description: "La famille Russo, d'origine étrangère, a connu l'exil et la persécution en France avant d'être arrêtée et déportée pendant l'Occupation.",
         num_convoi: 29,
         localisation: {
             lat: 44.5637684,
@@ -85,7 +85,7 @@ const families = [
     },
     {
         name: "Vorms",
-        description: "La famille Vorms déportée",
+        description: "Famille Vorms déportée : arrestation, internement et déportation; leur histoire est rappelée lors des commémorations et travaux de mémoire.",
         num_convoi: 70,
         localisation: {
             lat: 44.559128,
