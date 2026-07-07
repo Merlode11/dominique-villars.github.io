@@ -184,6 +184,7 @@ section .next .text {
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 #hautes-alpes .body .slideshow .select {
@@ -198,6 +199,12 @@ section .next .text {
 
 #hautes-alpes .body .slideshow .select:hover {
     cursor: pointer;
+}
+
+#hautes-alpes .body .slideshow .select:disabled {
+    color: #b6c1c8;
+    cursor: not-allowed;
+    opacity: 0.45;
 }
 
 #hautes-alpes .body .slideshow .videos {
@@ -232,6 +239,35 @@ section .next .text {
     opacity: 100%;
     z-index: 1;
     transform: translateX(0);
+}
+
+#hautes-alpes .body .slideshow .pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#hautes-alpes .body .slideshow .pagination-dot {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #b6c1c8;
+    cursor: pointer;
+    transition: .15s;
+}
+
+#hautes-alpes .body .slideshow .pagination-dot.active {
+    background-color: var(--nav-color);
+    transform: scale(1.2);
+}
+
+#hautes-alpes .body .slideshow .pagination-dot:hover {
+    transform: scale(1.15);
 }
 
 #gap {
@@ -392,12 +428,18 @@ section .next .text {
 
     #hautes-alpes .body .slideshow {
         width: 100%;
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
     }
 
     #hautes-alpes .body .slideshow .videos {
-        width: 100%;
+        width: calc(100% - 120px);
+    }
+
+    #hautes-alpes .body .slideshow .select {
+        font-size: 3em;
     }
 
     #gap {
@@ -440,6 +482,24 @@ section .next .text {
         font-size: 1em;
         flex-direction: column;
         gap: 8px;
+    }
+
+    #hautes-alpes .body .slideshow {
+        gap: 8px;
+    }
+
+    #hautes-alpes .body .slideshow .videos {
+        width: calc(100% - 90px);
+    }
+
+    #hautes-alpes .body .slideshow .pagination {
+        margin-top: 6px;
+        gap: 8px;
+    }
+
+    #hautes-alpes .body .slideshow .pagination-dot {
+        width: 10px;
+        height: 10px;
     }
 
     #gap .body {
