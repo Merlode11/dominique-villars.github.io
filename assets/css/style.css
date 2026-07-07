@@ -460,9 +460,7 @@ section .next .text {
     }
 }
 
-/* Layout fixes for medium-large viewports where arrows were wrapping (901px - 1520px) */
 @media (min-width: 901px) and (max-width: 1520px) {
-    /* Grid layout: left arrow | video | right arrow  — pagination under */
     #hautes-alpes .body .slideshow {
         width: 90%;
         display: grid;
@@ -534,13 +532,12 @@ section .next .text {
     #hautes-alpes .body .slideshow {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        /* use non-reserved names for grid areas to avoid parser/linter issues */
+
+        grid-template-columns: 44px 1fr 44px;
         grid-template-areas:
-            "videos videos"
-            "arrow-left arrow-right"
-            "pagination pagination";
-        gap: 12px 12px;
+            "videos videos videos"
+            "arrow-left pagination arrow-right";
+        gap: 10px 12px;
         justify-items: center;
         align-items: center;
     }
@@ -557,7 +554,6 @@ section .next .text {
         max-width: 100%;
     }
 
-    /* assign buttons to the renamed grid areas */
     #hautes-alpes .body .slideshow .select.left {
         grid-area: arrow-left;
     }
@@ -567,14 +563,21 @@ section .next .text {
     }
 
     #hautes-alpes .body .slideshow .select {
-        font-size: 3em;
-        width: 100%;
+        font-size: 1.9em;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
     }
 
     #hautes-alpes .body .slideshow .pagination {
         grid-area: pagination;
-        width: auto;
-        margin-top: 12px; /* petit espace sur mobile */
+        width: 100%;
+        margin-top: 12px;
+        justify-content: center;
     }
 
     section .next {
