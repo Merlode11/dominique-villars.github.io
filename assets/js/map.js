@@ -111,7 +111,13 @@ class LeafletMarker {
 
         this.popup.getElement().addEventListener("click", () => {
             const modal = document.getElementById("modal");
-            modal.style.display = "block";
+            // open native dialog
+            if (typeof modal.showModal === 'function') {
+                modal.showModal();
+            } else {
+                // fallback for older browsers
+                modal.style.display = 'block';
+            }
             const body = document.body
             body.classList.add("modal-open");
 
@@ -147,30 +153,43 @@ class LeafletMarker {
 }
 
 function close() {
-    let modal = document.getElementById("modal");
-    modal.style.display = "none";
-    let body = document.body
+    const modal = document.getElementById("modal");
+    // close native dialog if available
+    if (typeof modal.close === 'function') {
+        modal.close();
+    } else {
+        modal.style.display = 'none';
+    }
+    const body = document.body
     body.classList.remove("modal-open");
 
-    let video = modal.getElementsByTagName("video")[0];
-    video.pause();
+    const video = modal.getElementsByTagName("video")[0];
+    if (video) video.pause();
 }
 
+const modal = document.getElementById('modal');
 let closeBtns = [...document.getElementsByClassName("close")];
 closeBtns.forEach(function (btn) {
     btn.onclick = close;
     btn.onkeydown = function (e) {
-        if (e.keyCode === 13) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
             close();
         }
     };
 });
 
-window.onclick = function (event) {
-    if (event.target.className === "modal") {
-        close();
-    }
-};
+// close when clicking on dialog backdrop
+if (modal) {
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) close();
+    });
+    // handle escape key to close dialog (native dialogs may handle it, but ensure fallback)
+    modal.addEventListener('cancel', function (e) {
+        // remove modal-open class if closed via ESC
+        document.body.classList.remove('modal-open');
+    });
+}
 
 
 const map = L.map('map').setView([44.55944, 6.07861], 15);
