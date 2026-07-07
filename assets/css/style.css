@@ -460,6 +460,45 @@ section .next .text {
     }
 }
 
+/* Layout fixes for medium-large viewports where arrows were wrapping (901px - 1520px) */
+@media (min-width: 901px) and (max-width: 1520px) {
+    #hautes-alpes .body .slideshow {
+        width: 90%;
+        display: flex;
+        flex-wrap: nowrap; /* prevent arrows from wrapping under the video */
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    /* Reserve space for arrows and let the video take remaining width */
+    #hautes-alpes .body .slideshow .videos {
+        width: calc(100% - 140px);
+        min-height: 320px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Make arrow buttons a fixed reasonable size so they don't push to next line */
+    #hautes-alpes .body .slideshow .select {
+        flex: 0 0 60px;
+        width: 60px;
+        font-size: 3em;
+    }
+
+    #hautes-alpes .body .slideshow .select.left,
+    #hautes-alpes .body .slideshow .select.right {
+        align-self: center;
+    }
+
+    #hautes-alpes .body .slideshow .pagination {
+        width: 100%;
+        margin-top: 8px;
+    }
+}
+
 @media (max-width: 600px) {
     #navigation-bar {
         flex-wrap: wrap;
