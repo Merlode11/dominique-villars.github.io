@@ -1,9 +1,9 @@
-// Ancien code
+// Affichage de la carte
 
 const families = [
     {
         name: "Beer",
-        description: "Primeta et Jacob Beer, d'origine Polonaise, immigrés en France",
+        description: "Primeta et Jacob Beer, originaires de Pologne, ont immigré en France; famille modeste arrêtée, internée puis déportée durant l'Occupation.",
         num_convoi: 29,
         localisation: {
             lat: 44.56064,
@@ -13,7 +13,7 @@ const families = [
     },
     {
         name: "Bloch",
-        description: "La famille Bloch",
+        description: "La famille Bloch, active localement, a été raflée pendant l'Occupation; certains membres déportés, leurs souvenirs restant dans la communauté.",
         num_convoi: 61,
         localisation: {
             lat: 44.561678,
@@ -23,7 +23,7 @@ const families = [
     },
     {
         name: "Hesse",
-        description: "La famille Hesse",
+        description: "La famille Hesse, bien intégrée à Gap, a subi persécutions antisémites, arrestation collective et déportation durant la Seconde Guerre mondiale.",
         num_convoi: 75,
         localisation: {
             lat: 44.557315,
@@ -33,7 +33,7 @@ const families = [
     },
     {
         name: "Daniel Perles",
-        description: "La famille Perles",
+        description: "Daniel Perles et sa famille, commerçants à Gap; arrêtés lors des rafles puis déportés; leur mémoire est toujours évoquée localement.",
         num_convoi: 70,
         localisation: {
             lat: 44.56108141438776,
@@ -44,7 +44,7 @@ const families = [
     },
     {
         name: "Jean Vorms",
-        description: "La famille Vorms",
+        description: "Jean Vorms et sa famille, touchés par les rafles: arrestation, internement puis déportation; récit transmis par proches et archives.",
         num_convoi: 70,
         localisation: {
             lat: 44.5612,
@@ -55,7 +55,7 @@ const families = [
     },
     {
         name: "Reicher",
-        description: "La famille Reicher",
+        description: "La famille Reicher, ancrée dans la ville, a été persécutée, arrêtée puis déportée; les traces de leur présence restent dans les mémoires locales.",
         num_convoi: 66,
         localisation: {
             lat: 44.5602701,
@@ -65,7 +65,7 @@ const families = [
     },
     {
         name: "Reins",
-        description: "La famille Reins",
+        description: "La famille Reins, raflée pendant la guerre, séparée et déportée; témoignages et documents conservent le souvenir de leur destin tragique.",
         num_convoi: 67,
         localisation: {
             lat: 44.559620,
@@ -75,7 +75,7 @@ const families = [
     },
     {
         name: "Russo",
-        description: "La famille Russo",
+        description: "La famille Russo, d'origine étrangère, a connu l'exil et la persécution en France avant d'être arrêtée et déportée pendant l'Occupation.",
         num_convoi: 29,
         localisation: {
             lat: 44.5637684,
@@ -85,7 +85,7 @@ const families = [
     },
     {
         name: "Vorms",
-        description: "La famille Vorms déportée",
+        description: "Famille Vorms déportée : arrestation, internement et déportation; leur histoire est rappelée lors des commémorations et travaux de mémoire.",
         num_convoi: 70,
         localisation: {
             lat: 44.559128,
@@ -111,7 +111,13 @@ class LeafletMarker {
 
         this.popup.getElement().addEventListener("click", () => {
             const modal = document.getElementById("modal");
-            modal.style.display = "block";
+            // open native dialog
+            if (typeof modal.showModal === 'function') {
+                modal.showModal();
+            } else {
+                // fallback for older browsers
+                modal.style.display = 'block';
+            }
             const body = document.body
             body.classList.add("modal-open");
 
@@ -147,30 +153,43 @@ class LeafletMarker {
 }
 
 function close() {
-    let modal = document.getElementById("modal");
-    modal.style.display = "none";
-    let body = document.body
+    const modal = document.getElementById("modal");
+    // close native dialog if available
+    if (typeof modal.close === 'function') {
+        modal.close();
+    } else {
+        modal.style.display = 'none';
+    }
+    const body = document.body
     body.classList.remove("modal-open");
 
-    let video = modal.getElementsByTagName("video")[0];
-    video.pause();
+    const video = modal.getElementsByTagName("video")[0];
+    if (video) video.pause();
 }
 
+const modal = document.getElementById('modal');
 let closeBtns = [...document.getElementsByClassName("close")];
 closeBtns.forEach(function (btn) {
     btn.onclick = close;
     btn.onkeydown = function (e) {
-        if (e.keyCode === 13) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
             close();
         }
     };
 });
 
-window.onclick = function (event) {
-    if (event.target.className === "modal") {
-        close();
-    }
-};
+// close when clicking on dialog backdrop
+if (modal) {
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) close();
+    });
+    // handle escape key to close dialog (native dialogs may handle it, but ensure fallback)
+    modal.addEventListener('cancel', function (e) {
+        // remove modal-open class if closed via ESC
+        document.body.classList.remove('modal-open');
+    });
+}
 
 
 const map = L.map('map').setView([44.55944, 6.07861], 15);
@@ -184,43 +203,3 @@ map.fitBounds(bounds);
 families.forEach(family => {
     new LeafletMarker(family);
 })
-
-
-// Select all links with hashes
-$('a[href*="#"]')
-    // Remove links that don't actually link to anything
-    .not('[href="#"]')
-    .not('[href="#0"]')
-    .click(function (event) {
-        // On-page links
-        if (
-            location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
-            &&
-            location.hostname === this.hostname
-        ) {
-            // Figure out element to scroll to
-            let target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            // Does a scroll target exist?
-            if (target.length) {
-                // Only prevent default if animation is actually gonna happen
-                event.preventDefault();
-                $('html, body').animate({
-                    scrollTop: target.offset().top
-                }, 800, function () {
-                    // Callback after animation
-                    // Must change focus!
-                    const $target = $(target);
-                    $target.focus();
-                    if ($target.is(":focus")) { // Checking if the target was focused
-                        return false;
-                    } else {
-                        $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
-                        $target.focus(); // Set focus again
-                    }
-                    ;
-                });
-            }
-        }
-    });
-

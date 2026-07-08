@@ -19,6 +19,7 @@ html, body {
     box-sizing: border-box;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
 }
 
 #navigation-bar {
@@ -76,14 +77,15 @@ html, body {
 }
 
 section {
-    width: 100vw;
-    height: 70vh;
-    padding: 15vh 0;
-
+    width: 100%;
+    min-height: 70vh;
+    padding: 15vh 0 6vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
+    scroll-margin-top: 90px;
 }
 
 section .title {
@@ -93,8 +95,14 @@ section .title {
     font-size: 2em;
 }
 
+section h4 {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+}
+
 section .body {
-    width: 50%;
+    width: 70%;
 
     display: flex;
     justify-content: space-around;
@@ -131,6 +139,7 @@ section .body .video-container .description {
 
 section .next {
     padding: 20px;
+    margin-top: 30px;
 
     display: flex;
     align-items: center;
@@ -157,12 +166,25 @@ section .next .text {
     margin: 0 15px 0 15px;
 }
 
-#hautes-alpes .body .slideshow {
-    width: 800px;
+#antisemitism {
+    min-height: 90vh;
+    height: auto;
+    padding: 10vh 0 6vh;
+}
 
+#hautes-alpes {
+    min-height: 85vh;
+    height: auto;
+    padding: 12vh 0 6vh;
+}
+
+#hautes-alpes .body .slideshow {
+    width: min(800px, 90vw);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 #hautes-alpes .body .slideshow .select {
@@ -179,12 +201,29 @@ section .next .text {
     cursor: pointer;
 }
 
+#hautes-alpes .body .slideshow .select:disabled {
+    color: #b6c1c8;
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+#hautes-alpes .body .slideshow .videos {
+    min-height: 320px;
+}
+
 #hautes-alpes .body .slideshow .videos {
     width: 80%;
+    position: relative;
 
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#hautes-alpes .body .slideshow .videos .video-container {
+    width: 100%;
+    max-width: 450px;
+    height: 300px;
 }
 
 #hautes-alpes .body .slideshow .videos .video-container {
@@ -203,14 +242,45 @@ section .next .text {
     transform: translateX(0);
 }
 
+#hautes-alpes .body .slideshow .pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+#hautes-alpes .body .slideshow .pagination-dot {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #b6c1c8;
+    cursor: pointer;
+    transition: .15s;
+}
+
+#hautes-alpes .body .slideshow .pagination-dot.active {
+    background-color: var(--nav-color);
+    transform: scale(1.2);
+}
+
+#hautes-alpes .body .slideshow .pagination-dot:hover {
+    transform: scale(1.15);
+}
+
 #gap {
-    height: 80vh;
-    padding: 10vh 0;
+    min-height: 80vh;
+    height: auto;
+    padding: 10vh 0 6vh;
 }
 
 #gap .body {
-    width: 65%;
-    height: 75%;
+    width: min(65%, 1100px);
+    min-height: 420px;
+    height: 65vh;
 }
 
 #gap .body #map {
@@ -220,8 +290,15 @@ section .next .text {
 }
 
 #pupils {
-    height: 90vh;
-    padding: 8vh 0 0 0;
+    min-height: 90vh;
+    height: auto;
+    padding: 10vh 0 6vh;
+}
+
+#travels {
+    min-height: 90vh;
+    height: auto;
+    padding: 10vh 0 6vh;
 }
 
 /* Ancien code */
@@ -233,7 +310,7 @@ section .next .text {
     font-weight: bold;
     padding: 5px 2px;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;*/
     background-color: #fff;
 }
 
@@ -253,7 +330,7 @@ section .next .text {
 .leaflet-popup-content-wrapper {
     background-color: transparent;
     color: inherit;
-    box-shadow: none;
+    box-shadow: none !important;
     text-align: inherit;
 }
 
@@ -282,14 +359,23 @@ section .next .text {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+dialog#modal {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+dialog#modal::backdrop {
+    background-color: rgba(0,0,0,0.4);
+}
+
 .modal-content {
-    margin: 50px auto;
+    margin: 0 auto;
     border: 1px solid #999;
-    width: 60%;
+    width: min(800px, 90%);
     background-color: #fefefe;
     border-radius: 10px;
     padding: 10px 20px 20px;
@@ -315,7 +401,6 @@ section .next .text {
 }
 
 .modal-open {
-    height: 100vh;
     overflow-y: hidden;
     overscroll-behavior: contain;
 }
@@ -326,6 +411,9 @@ section .next .text {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    background: transparent; /* remove background */
+    border: none; /* remove contour */
+    padding: 0;
 }
 
 .close:hover,
@@ -333,4 +421,200 @@ section .next .text {
     color: black;
     text-decoration: none;
     cursor: pointer;
+    outline: none;
+}
+
+@media (max-width: 900px) {
+    section {
+        min-height: auto;
+        padding: 12vh 0 5vh;
+    }
+
+    section .body {
+        width: 90%;
+    }
+
+    section .body .video-container {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+    }
+
+    #hautes-alpes .body .slideshow {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    #hautes-alpes .body .slideshow .videos {
+        width: calc(100% - 120px);
+    }
+
+    #hautes-alpes .body .slideshow .select {
+        font-size: 3em;
+    }
+
+    #gap {
+        min-height: auto;
+        padding-bottom: 8vh;
+    }
+
+    #gap .body {
+        width: 90%;
+        height: 55vh;
+        min-height: 320px;
+    }
+
+    #pupils {
+        min-height: auto;
+        padding-bottom: 8vh;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1520px) {
+    #hautes-alpes .body .slideshow {
+        width: 90%;
+        display: grid;
+        grid-template-columns: 64px 1fr 64px;
+        grid-template-areas:
+            "arrow-left videos arrow-right"
+            "pagination pagination pagination";
+        gap: 12px 20px;
+        align-items: center;
+        justify-items: center;
+    }
+
+    #hautes-alpes .body .slideshow .videos {
+        grid-area: videos;
+        width: 100%;
+        min-height: 260px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 0; /* allow shrinking inside grid */
+    }
+
+    #hautes-alpes .body .slideshow .select {
+        width: 64px;
+        height: 64px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border-radius: 50%;
+        background: transparent;
+    }
+
+    #hautes-alpes .body .slideshow .select.left {
+        grid-area: arrow-left;
+    }
+
+    #hautes-alpes .body .slideshow .select.right {
+        grid-area: arrow-right;
+    }
+
+    #hautes-alpes .body .slideshow .pagination {
+        grid-area: pagination;
+        width: 100%;
+        justify-content: center;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    #navigation-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #navigation-bar a {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    section .title {
+        font-size: 1.5em;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    #hautes-alpes .body .slideshow {
+        width: 100%;
+        display: grid;
+
+        grid-template-columns: 44px 1fr 44px;
+        grid-template-areas:
+            "videos videos videos"
+            "arrow-left pagination arrow-right";
+        gap: 10px 12px;
+        justify-items: center;
+        align-items: center;
+    }
+
+    #hautes-alpes .body .slideshow .videos {
+        grid-area: videos;
+        width: 100%;
+        min-height: 0;
+        height: clamp(200px, 52vw, 280px);
+    }
+
+    #hautes-alpes .body .slideshow .videos .video-container {
+        height: 100%;
+        max-width: 100%;
+    }
+
+    #hautes-alpes .body .slideshow .select.left {
+        grid-area: arrow-left;
+    }
+
+    #hautes-alpes .body .slideshow .select.right {
+        grid-area: arrow-right;
+    }
+
+    #hautes-alpes .body .slideshow .select {
+        margin-top: 20px;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    #hautes-alpes .body .slideshow .pagination {
+        grid-area: pagination;
+        width: 100%;
+        margin-top: 12px;
+        justify-content: center;
+    }
+
+    section .next {
+        padding: 14px;
+        margin-top: 20px;
+        font-size: 1em;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #hautes-alpes .body .slideshow .pagination {
+        gap: 8px;
+    }
+
+    #hautes-alpes .body .slideshow .pagination-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    #gap .body {
+        height: 45vh;
+        min-height: 280px;
+    }
+
+    section .body .video-container video {
+        object-fit: cover;
+    }
 }
