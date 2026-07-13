@@ -2,8 +2,8 @@
 
 const families = [
     {
-        name: "Beer",
-        description: "Primeta et Jacob Beer, originaires de Pologne, ont immigré en France; famille modeste arrêtée, internée puis déportée durant l'Occupation.",
+        name: "Famille Beer",
+        description: "Famille Beer — Déportée par le convoi n° 29 (7 septembre 1942). Aucun survivant.",
         num_convoi: 29,
         localisation: {
             lat: 44.56064,
@@ -12,8 +12,8 @@ const families = [
         video: "assets/video/antisemitism/beer.mp4"
     },
     {
-        name: "Bloch",
-        description: "La famille Bloch, active localement, a été raflée pendant l'Occupation; certains membres déportés, leurs souvenirs restant dans la communauté.",
+        name: "Honoré Bloch",
+        description: "Honoré Bloch — Déporté par le convoi n° 61 (28 octobre 1943). N'a pas survécu.",
         num_convoi: 61,
         localisation: {
             lat: 44.561678,
@@ -22,8 +22,8 @@ const families = [
         video: "assets/video/antisemitism/bloch.mp4"
     },
     {
-        name: "Hesse",
-        description: "La famille Hesse, bien intégrée à Gap, a subi persécutions antisémites, arrestation collective et déportation durant la Seconde Guerre mondiale.",
+        name: "Robert Hesse",
+        description: "Robert Hesse — Déporté par le convoi n° 75 (30 mai 1944). N'a pas survécu.",
         num_convoi: 75,
         localisation: {
             lat: 44.557315,
@@ -32,8 +32,8 @@ const families = [
         video: "assets/video/antisemitism/hesse.mp4"
     },
     {
-        name: "Daniel Perles",
-        description: "Daniel Perles et sa famille, commerçants à Gap; arrêtés lors des rafles puis déportés; leur mémoire est toujours évoquée localement.",
+        name: "Daniel Perlès",
+        description: "Daniel Perlès — Déporté par le convoi n° 70 (27 mars 1944). N'a pas survécu.",
         num_convoi: 70,
         localisation: {
             lat: 44.56108141438776,
@@ -43,8 +43,8 @@ const families = [
         img: ""
     },
     {
-        name: "Jean Vorms",
-        description: "Jean Vorms et sa famille, touchés par les rafles: arrestation, internement puis déportation; récit transmis par proches et archives.",
+        name: "Famille Vorms",
+        description: "Famille Vorms — Déportée par le convoi n° 70 (27 mars 1944). Aucun survivant.",
         num_convoi: 70,
         localisation: {
             lat: 44.5612,
@@ -54,8 +54,8 @@ const families = [
         img: ""
     },
     {
-        name: "Reicher",
-        description: "La famille Reicher, ancrée dans la ville, a été persécutée, arrêtée puis déportée; les traces de leur présence restent dans les mémoires locales.",
+        name: "Charles Reicher",
+        description: "Charles Reicher — Déporté par le convoi n° 66 (20 janvier 1944). N'a pas survécu.",
         num_convoi: 66,
         localisation: {
             lat: 44.5602701,
@@ -64,8 +64,8 @@ const families = [
         video: "assets/video/antisemitism/reicher.mp4"
     },
     {
-        name: "Reins",
-        description: "La famille Reins, raflée pendant la guerre, séparée et déportée; témoignages et documents conservent le souvenir de leur destin tragique.",
+        name: "Famille Reins",
+        description: "Famille Reins — Déportée par le convoi n° 67 (3 février 1944). Aucun survivant.",
         num_convoi: 67,
         localisation: {
             lat: 44.559620,
@@ -74,8 +74,8 @@ const families = [
         video: "assets/video/antisemitism/reins.mp4"
     },
     {
-        name: "Russo",
-        description: "La famille Russo, d'origine étrangère, a connu l'exil et la persécution en France avant d'être arrêtée et déportée pendant l'Occupation.",
+        name: "Hanna Russo",
+        description: "Hanna Russo — Déportée par le convoi n° 29 (7 septembre 1942). N'a pas survécu.",
         num_convoi: 29,
         localisation: {
             lat: 44.5637684,
@@ -84,8 +84,8 @@ const families = [
         video: "assets/video/antisemitism/russo.mp4"
     },
     {
-        name: "Vorms",
-        description: "Famille Vorms déportée : arrestation, internement et déportation; leur histoire est rappelée lors des commémorations et travaux de mémoire.",
+        name: "Famille Vorms",
+        description: "Famille Vorms — Déportée par le convoi n° 70 (27 mars 1944). Aucun survivant.",
         num_convoi: 70,
         localisation: {
             lat: 44.559128,
