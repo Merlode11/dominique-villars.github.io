@@ -80,7 +80,7 @@ const families = [
             lat: 44.559128,
             lng: 6.080373
         },
-        video: "assets/video/antisemitism/vorms.mp4"
+        video: "assets/video/gap/Vorms.mp4"
     },
 ];
 
