@@ -43,17 +43,6 @@ const families = [
         img: ""
     },
     {
-        name: "Famille Vorms",
-        description: "Famille Vorms — Déportée par le convoi n° 70 (27 mars 1944). Aucun survivant.",
-        num_convoi: 70,
-        localisation: {
-            lat: 44.5612,
-            lng: 6.0760737822046575
-        },
-        video: "assets/video/gap/Vorms.mp4",
-        img: ""
-    },
-    {
         name: "Charles Reicher",
         description: "Charles Reicher — Déporté par le convoi n° 66 (20 janvier 1944). N'a pas survécu.",
         num_convoi: 66,
